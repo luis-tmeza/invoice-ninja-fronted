@@ -1,0 +1,6 @@
+
+[
+      { "icon": "mdi-account-multiple", "text": "Customers", "path": "/customers" },
+      { "icon": "mdi-package-variant", "text": "Products", "path": "/products" },
+      { "icon": "mdi-note-text", "text": "Invoices", "path": "/invoices" }
+]
