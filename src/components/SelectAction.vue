@@ -26,36 +26,23 @@
 <script>
 import axios from "axios";
 export default {
-    
   name: "infoCustomers",
-  data: () =>({
-     
-  }),
+  data: () => ({}),
   props: {
-      customers: {
-          type: Array,
+    customers: {
+      type: Array,
+    },
 
-      },
-      
     item: {
       type: Object,
-    }
-  },
-  methods:{
-      
-    deleteCustomer(item) {
-    
-      axios
-        .delete("http://localhost:3000/customers/" + item.id)
-        .then((response) => {
-          this.customers = response.data;
-        }
-        );
     },
-  }
+  },
 
+  methods: {
+    deleteCustomer(item) {
+      axios.delete("http://localhost:3000/customers/" + item.id).then(() => {});
+    },
+  },
 };
-
-
 </script>
 

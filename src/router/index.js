@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 const routes = [
 
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home
   },
@@ -40,7 +40,14 @@ const routes = [
     path: '/customers/create',
     name: 'CreateCustomer',
     component: () => import (/* webpackChunkName: "CreateCustomer" */ '../views/CreateCustomer.vue')
+  },
+
+  {
+    path: '/',
+    name: 'Login',
+    component: () => import (/* webpackChunkName: "Login" */ '../views/Login.vue')
   }
+
 
 
 ]
@@ -50,5 +57,6 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+
 
 export default router

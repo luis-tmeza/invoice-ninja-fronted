@@ -6,7 +6,7 @@
         <v-divider class="mx-4" inset vertical></v-divider>
         <v-spacer></v-spacer>
 
-        <v-btn color="primary" dark class="mb-2" :to="{name:'CreateCustomer'}" > New Client </v-btn>
+        <v-btn color="primary" dark class="mb-2" :to="{name:'CreateCustomer'}" > Nuevo Cliente</v-btn>
       </v-toolbar>
     </template>
 
