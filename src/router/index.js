@@ -8,7 +8,7 @@ Vue.use(VueRouter)
 const routes = [
 
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
     component: Home
   },
@@ -23,31 +23,44 @@ const routes = [
   {
     path: '/products',
     name: 'Products',
-    component: () => import (/* webpackChunkName: "products" */ '../views/Products.vue')
+    component: () => import(/* webpackChunkName: "products" */ '../views/Products.vue')
   },
 
   {
     path: '/customers',
     name: 'Customers',
-    component: () => import (/* webpackChunkName: "customers" */ '../views/Customers.vue')
+    component: () => import(/* webpackChunkName: "customers" */ '../views/Customers.vue'),
+    
   },
   {
     path: '/invoices',
     name: 'Invoices',
-    component: () => import (/* webpackChunkName: "invoices" */ '../views/Invoices.vue')
+    component: () => import(/* webpackChunkName: "invoices" */ '../views/Invoices.vue')
+  },
+  {
+    path: '/invoices/createinvoices',
+    name: 'CreateInvoices',
+    component: () => import(/* webpackChunkName: "Createinvoices" */ '../views/CreateInvoices.vue')
   },
   {
     path: '/customers/create',
     name: 'CreateCustomer',
-    component: () => import (/* webpackChunkName: "CreateCustomer" */ '../views/CreateCustomer.vue')
+    component: () => import(/* webpackChunkName: "CreateCustomer" */ '../views/CreateCustomer.vue'),
+    meta: { transitionName: 'slide' },
   },
 
   {
-    path: '/',
-    name: 'Login',
-    component: () => import (/* webpackChunkName: "Login" */ '../views/Login.vue')
-  }
+    path: '/customers/:customerId/contacts',
+    name: 'Contacts',
+    component: () => import(/* webpackChunkName: "Contacts" */ '../views/Contacts.vue'),
+    props: true
+  },
 
+  {
+    path: '*',
+    name: 'Not Found',
+    component: () => import(/* webpackChunkName: "NotFound" */ '../views/NotFound.vue'),
+  }
 
 
 ]

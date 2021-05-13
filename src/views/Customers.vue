@@ -6,7 +6,14 @@
         <v-divider class="mx-4" inset vertical></v-divider>
         <v-spacer></v-spacer>
 
-        <v-btn color="primary" dark class="mb-2" :to="{name:'CreateCustomer'}" > Nuevo Cliente</v-btn>
+        <v-btn
+          color="primary"
+          dark
+          class="mb-2"
+          :to="{ name: 'CreateCustomer' }"
+        >
+          Nuevo Cliente</v-btn
+        >
       </v-toolbar>
     </template>
 
@@ -21,6 +28,7 @@ import axios from "axios";
 import SelectAction from "../components/SelectAction.vue";
 
 export default {
+  name: "customers",
   components: { SelectAction },
   data: () => ({
     mode: "",
@@ -46,11 +54,30 @@ export default {
   }),
 
   created() {
-    this.getProducts();
+    this.getCustomers();
   },
-
+  filters: {
+    upper(value) {
+      return value.toUpperCase();
+    },
+    capitalizeWords(value) {
+      value.toString();
+      return value.replace(/\b\w/g, (l) => l.toUpperCase());
+    },
+    capitalize(value) {
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    },
+    lower(value) {
+      return value.toLowerCase();
+    },
+    formatPrice(value) {
+      let val = (value / 1).toFixed(2).replace(".", ",");
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    },
+  },
   methods: {
-    getProducts() {
+    getCustomers() {
       axios.get("http://localhost:3000/customers").then((response) => {
         this.customers = response.data;
       });
@@ -58,3 +85,4 @@ export default {
   },
 };
 </script>
+

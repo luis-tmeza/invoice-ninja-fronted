@@ -1,6 +1,12 @@
 <template>
-  <div class="home">
-   <h1>hola mundo</h1>
-  </div>
+  <login-layout></login-layout>
 </template>
+
+<script>
+import LoginLayout from '../layouts/Login';
+export default {
+  components: { LoginLayout },
+  data: () => {},
+};
+</script>
 

@@ -9,7 +9,9 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item @click="() => {}">
+        <v-list-item
+          :to="{ name: 'Contacts', params: { customerId: item.id , item } }"
+        >
           <v-list-item-title> Ver Contacto</v-list-item-title>
         </v-list-item>
         <v-list-item @click="() => {}">
@@ -26,13 +28,9 @@
 <script>
 import axios from "axios";
 export default {
-  name: "infoCustomers",
+  
   data: () => ({}),
   props: {
-    customers: {
-      type: Array,
-    },
-
     item: {
       type: Object,
     },

@@ -12,6 +12,8 @@
                 v-model="customer.name"
                 label="Nombre del Cliente"
                 prepend-icon="perm_identity"
+                :rules="requireField"
+                
               ></v-text-field>
               <v-text-field
                 outlined
@@ -19,6 +21,7 @@
                 v-model="customer.address"
                 label="Direccion"
                 prepend-icon="home"
+                :rules="requireField"
               ></v-text-field>
               <v-text-field
                 outlined
@@ -26,6 +29,7 @@
                 v-model="customer.city"
                 label="Ciudad"
                 prepend-icon="location_city"
+                :rules="requireField"
               ></v-text-field>
               <v-text-field
                 outlined
@@ -33,13 +37,17 @@
                 v-model="customer.cell_phone_number"
                 label="Numero de Telefono"
                 prepend-icon="phone_in_talk"
+                type="number"
+                :rules="requireField"
               ></v-text-field>
               <v-text-field
                 outlined
                 dense
+                :rules="emailRules"
                 v-model="customer.email"
                 label="Correo Electronico"
                 prepend-icon="email"
+                placeholder="example@example.com"
               ></v-text-field>
             </v-form>
           </v-card-text>
@@ -56,6 +64,7 @@
                 v-model="contact.first_name"
                 label="Nombre de contacto"
                 prepend-icon="contacts"
+                :rules="requireField"
               ></v-text-field>
               <v-text-field
                 outlined
@@ -63,6 +72,7 @@
                 v-model="contact.last_name"
                 label="Apellidos"
                 prepend-icon="contacts"
+                :rules="requireField"
               ></v-text-field>
               <v-text-field
                 outlined
@@ -70,6 +80,7 @@
                 v-model="contact.email"
                 label="Correo Electronico"
                 prepend-icon="email"
+                :rules="emailRules"
               ></v-text-field>
               <v-text-field
                 outlined
@@ -77,6 +88,8 @@
                 v-model="contact.phone"
                 label="Numero de Telefono"
                 prepend-icon="phone_in_talk"
+                :rules="requireField"
+                
               ></v-text-field>
             </v-form>
           </v-card-text>
@@ -96,6 +109,11 @@
 import axios from "axios";
 export default {
   data: () => ({
+    requireField: [(v) => !!v || "Campo obligatorio"],
+    emailRules: [
+      v => !!v || "E-mail es requerido",
+      v => /.+@.+\..+/.test(v) || "E-mail debe ser válido",
+    ],
     customer: {
       name: "",
       address: "",
@@ -144,6 +162,13 @@ export default {
           this.contact.phone = "";
         });
     },
+  },
+
+  filters: {
+    mayusculas(name) {
+      return name.toUpperCase();
+    },
+    
   },
 };
 </script>
